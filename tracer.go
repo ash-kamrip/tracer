@@ -5,12 +5,12 @@ import (
 	"io"
 )
 
-// a struct type
+// a struct type : private
 type tracer struct {
 	out io.Writer
 }
 
-// an interface type
+// an interface type : Exported
 type Tracer interface {
 	Trace(...interface{})
 }
