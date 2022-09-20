@@ -9,6 +9,8 @@ import (
 type tracer struct {
 	out io.Writer
 }
+type niltracer struct {
+}
 
 // an interface type : Exported
 type Tracer interface {
@@ -20,7 +22,14 @@ func (t *tracer) Trace(a ...interface{}) {
 	fmt.Fprintln(t.out)
 
 }
+func (t *niltracer) Trace(a ...interface{}) {
+
+}
 func New(w io.Writer) Tracer {
 
 	return &tracer{out: w}
+}
+
+func Off() Tracer {
+	return &niltracer{}
 }
